@@ -1,4 +1,4 @@
-package com.company;
+﻿package com.company;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -9,14 +9,14 @@ public class ArrayHandler {
 
     }
 
-    static short[] keyboardFilling(short[] arr) {
+    short[] keyboardFilling(short[] arr) {
         Scanner in = new Scanner(System.in);
         for (int i = 0; i < arr.length; i++)
             arr[i] = in.nextShort();
         return arr;
     }
 
-    static short[] randomFilling(short[] arr) {
+    short[] randomFilling(short[] arr) {
         Random random = new Random();
         for (int i = 0; i < arr.length; i++)
             //arr[i] = (short) random.nextInt(1 << 15);
@@ -24,12 +24,11 @@ public class ArrayHandler {
         return arr;
     }
 
-    static void showArray(short[] arr) {
+    void showArray(short[] arr) {
         for (short i: arr)
             System.out.print(i + " ");
     }
-
-    static void showArrayBack(short[] arr) {
+    void showArrayBack(short[] arr) {
         for (int i = arr.length-1; i >= 0; i--)
             System.out.print(arr[i] + " ");
     }
@@ -43,7 +42,7 @@ public class ArrayHandler {
 которых нечетна.
 */
 
-    static int arrDivCount(int lim, short[] arr){
+    int arrDivCount(int lim, short[] arr){
         int counter = 0;
         for (short i: arr){
             if (lim>divCount(i))
@@ -52,7 +51,7 @@ public class ArrayHandler {
         return counter;
     }
 
-    static int divCount(short a) {
+    private int divCount(short a) {
         short i = 2;
         int counter = 2;
         while (i < a / 2 + 1) {
@@ -63,7 +62,7 @@ public class ArrayHandler {
         return counter;
     }
 
-    static short[] delSomething(short[] arr){
+    short[] delSomething(short[] arr){
         int len = arr.length;
         int newLen = arr.length;
         for (int i = 0; i < len; i++){
@@ -84,7 +83,7 @@ public class ArrayHandler {
         return arr;
     }
 
-    static boolean checkFirstNum(short a){
+    private boolean checkFirstNum(short a){
         while(a>9)
             a/=10;
         //System.out.print(a + " ");
@@ -93,3 +92,4 @@ public class ArrayHandler {
     }
 
 }
+
