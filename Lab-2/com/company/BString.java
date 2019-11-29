@@ -53,7 +53,7 @@ public class BString {
 
     public StringBuilder paste() {
         int counter = 1;
-        double max = -922337203685477580.0d;
+        double max = Integer.MIN_VALUE;
         double digit = 0;
         newNum.setLength(0);
         for (String word : text.split(" ")) {

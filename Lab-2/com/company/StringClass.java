@@ -34,8 +34,9 @@ public class StringClass {
     StringClass(String t) {
         text = t;
     }
-    public String findMax() {
-        double max = -922337203685477580.0d;
+    public String findMax() { //не может быть дабл, потому что цифр в сообщении может не быть
+        double max = Integer.MIN_VALUE;
+        boolean flag = true;
         double digit = 0;
         for (String word : text.split(" ")) {
             try {
@@ -46,7 +47,7 @@ public class StringClass {
 
             }
         }
-        if (max !=-922337203685477580.0)
+        if (flag)
             return Double.toString(max);
         return "Чисел не найдено";
     }
