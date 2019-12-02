@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static Tester tester = new Tester();
+    private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
         Admin admin = new Admin("Админ", "admin", "admin");
-	    Tester tester = new Tester();
         int swicher = -1;
-        Scanner in = new Scanner(System.in);
         boolean flag = true;
+        var main = new Main();
 
         boolean adminFlag = false;
         while (true){
@@ -37,15 +38,15 @@ public class Main {
 
                 switch (swicher){
                     case 1:
-                        createNewUser(tester, in);
+                        main.createNewUser();
                         break;
 
                     case 2:
-                        enter(tester, in);
+                        main.enter();
                         adminFlag = false;
                         break;
                     case 3:
-                        addQuestion(tester, in);
+                        main.addQuestion();
                         break;
                     case 4:
                         System.out.println(tester.getResult());
@@ -54,8 +55,6 @@ public class Main {
                         return;
                 }
             }
-
-
 
             else {
                 System.out.println("Войдите в систему!");
@@ -74,7 +73,7 @@ public class Main {
                         System.out.println("Такого пользователя нет в системе");
                     }
                     else
-                        tester.startTest();
+                        main.startTest();
 
 
                 }
@@ -84,7 +83,7 @@ public class Main {
 
         }
     }
-    public static void createNewUser(Tester tester, Scanner in){
+    public void createNewUser(){
         System.out.print("\nВведите своё имя: ");
         String name = in.nextLine();
         System.out.print("\nВведите логин: ");
@@ -94,7 +93,7 @@ public class Main {
         tester.addUser(name, login, password);
     }
 
-    public static void enter(Tester tester, Scanner in){
+    public void enter(){
         System.out.print("\nВведите логин: ");
         String login = in.nextLine();
         System.out.print("\nВведите пароль: ");
@@ -105,11 +104,51 @@ public class Main {
             return;
         }
 
-        tester.startTest();
+        startTest();
 
     }
 
-    public static void addQuestion(Tester tester, Scanner in){
+    public void startTest()
+    {
+        TestedUser currentUser = tester.getCurrentUser();
+        System.out.println("Здравствуйте, " + currentUser.getName());
+        System.out.println("Тестирование началось!\n");
+        int answ = -1;
+        Scanner in = new Scanner(System.in);
+        boolean flag = true;
+        int counter = 1;
+
+        ArrayList<Question> questions = tester.getQuestions();
+
+        for(int i = 0; i<questions.size(); i++){
+            flag = true;
+            System.out.println(i + 1 + ". "+ questions.get(i).getText());
+            counter = 1;
+            for(String answer: questions.get(i).getAnswers())
+                System.out.println(counter++ + ") " + answer);
+
+
+            while (flag) {
+                if (in.hasNextInt()) {
+                    answ = in.nextInt();
+                    flag = false;
+                } else {
+                    System.out.println("Вы ввели не число");
+                    in.nextLine();
+                }
+            }
+            in.nextLine();
+
+
+            if (questions.get(i).isCorrect(answ)) {
+                currentUser.right();
+            }
+            currentUser.answ();
+        }
+        System.out.println("Тест окончен!");
+    }
+
+    public void addQuestion(){
 
         System.out.print("\nВведите вопрос: ");
         String question = in.nextLine();

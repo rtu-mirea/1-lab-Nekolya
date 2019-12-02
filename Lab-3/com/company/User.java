@@ -17,11 +17,6 @@ public class User {
         this.password = password;
     }
 
-    User(){
-        this.name = "ERROR!!!";
-        this.login = "ERROR!!!";
-        this.password = "ERROR!!!";
-    }
 
 
 //////////////////////

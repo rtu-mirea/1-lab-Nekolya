@@ -33,37 +33,12 @@ public class Tester {
         return false;
     }
 
-    public void startTest(){
-        System.out.println("Здравствуйте, " + currentUser.getName());
-        System.out.println("Тестирование началось!\n");
-        int answ = -1;
-        Scanner in = new Scanner(System.in);
-        boolean flag = true;
-        int counter = 1;
-        for(int i = 0; i<questions.size(); i++){
-            System.out.println(i + 1 + ". "+ questions.get(i).getText());
-            counter = 1;
-            for(String answer: questions.get(i).getAnswers())
-                System.out.println(counter++ + ") " + answer);
+    public TestedUser getCurrentUser() {
+        return currentUser;
+    }
 
-
-            while (flag) {
-                if (in.hasNextInt()) {
-                    answ = in.nextInt();
-                    flag = false;
-                } else {
-                    System.out.println("Вы ввели не число");
-                    in.nextLine();
-                }
-            }
-            in.nextLine();
-
-            if (questions.get(i).isCorrect(answ)) {
-                currentUser.right();
-            }
-            currentUser.answ();
-        }
-        System.out.println("Тест окончен!");
+    public ArrayList<Question> getQuestions(){
+        return questions;
     }
 
     public String getResult(){

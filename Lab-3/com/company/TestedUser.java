@@ -10,12 +10,7 @@ public class TestedUser extends User {
         questionsCount = 0;
         rightAnswersCount = 0;
     }
-    TestedUser()
-    {
-        super();
-        questionsCount = 0;
-        rightAnswersCount = 0;
-    }
+
 
     public void answ()
     {
