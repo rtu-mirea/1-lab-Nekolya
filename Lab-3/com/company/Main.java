@@ -83,7 +83,7 @@ public class Main {
 
         }
     }
-    public void createNewUser(){
+    private void createNewUser(){
         System.out.print("\nВведите своё имя: ");
         String name = in.nextLine();
         System.out.print("\nВведите логин: ");
@@ -93,7 +93,7 @@ public class Main {
         tester.addUser(name, login, password);
     }
 
-    public void enter(){
+    private void enter(){
         System.out.print("\nВведите логин: ");
         String login = in.nextLine();
         System.out.print("\nВведите пароль: ");
@@ -108,7 +108,7 @@ public class Main {
 
     }
 
-    public void startTest()
+    private void startTest()
     {
         TestedUser currentUser = tester.getCurrentUser();
         System.out.println("Здравствуйте, " + currentUser.getName());
@@ -148,7 +148,7 @@ public class Main {
         System.out.println("Тест окончен!");
     }
 
-    public void addQuestion(){
+    private void addQuestion(){
 
         System.out.print("\nВведите вопрос: ");
         String question = in.nextLine();
